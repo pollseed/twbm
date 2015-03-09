@@ -1,0 +1,2 @@
+module Job::FollowHelper
+end
