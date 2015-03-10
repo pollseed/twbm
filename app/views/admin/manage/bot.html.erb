@@ -1,4 +1,7 @@
 <h1>bot登録管理(仮)</h1>
+<hr>
+<h2>❏ 登録</h2>
+<div style="padding-bottom: 10px;">
 <%= form_for(@bot, url: '') do |f| %>
 <%= render 'shared/error_messages' %>
 <p style="color: green;"><%= notice %></p>
@@ -9,3 +12,26 @@
 <p>hash_tags<%= f.number_field :hash_tags %></p>
 <button type="submit">bot登録</button>
 <% end %>
+</div>
+<hr>
+<h2>❏ 一覧</h2>
+<div>
+<table border="1">
+  <tr>
+    <th>No.</th>
+    <th>twitter_name</th>
+    <th>twitter_id</th>
+    <th>access_token</th>
+    <th>hash_tags</th>
+  </tr>
+<% @bots.each_with_index do |b,cnt| %>
+  <tr>
+    <td><%= cnt+1 %></td>
+    <td><%= b.twitter_name %></td>
+    <td><%= b.twitter_id %></td>
+    <td><%= b.access_token %></td>
+    <td><%= b.hash_tags %></td>
+  </tr>
+<% end %>
+</table>
+</div>

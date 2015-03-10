@@ -3,10 +3,12 @@ class Admin::ManageController < ApplicationController
   end
 
   def bot
+    list
     @bot = Bot.new
   end
 
   def create
+    list
     @bot = Bot.new(bot_params)
     if @bot.nil?
       render({action: :bot}, alert: "登録失敗!!")
@@ -17,6 +19,10 @@ class Admin::ManageController < ApplicationController
     else
       render '/admin/manage/bot'
     end
+  end
+
+  def list
+    @bots = Bot.find_by
   end
 
   def twitter

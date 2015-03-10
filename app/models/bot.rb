@@ -6,4 +6,9 @@ class Bot < ActiveRecord::Base
   validates :access_token, presence: true
   validates :hash_tags, presence: true
 
+  # 論理削除されていないレコードを全取得
+  def self.find_by
+    Bot.where(:deleted => false)
+  end
+
 end
