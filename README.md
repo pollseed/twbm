@@ -9,6 +9,12 @@
 $ bundle exec rake twitter:tweet
 ```
 
+#modelの適用
+
+```
+$ bundle exec rake db:migrate
+```
+
 ## directory
 以下は、このpjのadminとjobの分け方サンプル
 なぜadminとjobを一緒にしているのかはgoogledocの通り
