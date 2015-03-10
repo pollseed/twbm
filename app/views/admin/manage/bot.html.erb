@@ -1,1 +1,11 @@
-bot
+<h1>bot登録管理(仮)</h1>
+<%= form_for(@bot, url: '') do |f| %>
+<%= render 'shared/error_messages' %>
+<p style="color: green;"><%= notice %></p>
+<p style="color: red;"><%= alert %></p>
+<p>twitter_name<%= f.text_field :twitter_name %></p>
+<p>twitter_id<%= f.text_field :twitter_id %></p>
+<p>access_token<%= f.text_field :access_token %></p>
+<p>hash_tags<%= f.number_field :hash_tags %></p>
+<button type="submit">bot登録</button>
+<% end %>

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
     # BOT
     get 'manage/bot' => 'manage#bot'
-    post 'manage/bot' => 'manage#bot'
+    post 'manage/bot' => 'manage#create'
 
     # TWITTER
     get 'manage/bot/twitter' => 'manage#twitter'
