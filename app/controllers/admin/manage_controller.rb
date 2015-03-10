@@ -9,11 +9,14 @@ class Admin::ManageController < ApplicationController
   def create
     @bot = Bot.new(bot_params)
     if @bot.nil?
-      redirect_to({action: :bot}, alert: "登録失敗!!")
+      render({action: :bot}, alert: "登録失敗!!")
     end
 
-    @bot.save
-    redirect_to({action: :bot}, notice: "登録完了!!")
+    if @bot.save
+      redirect_to({action: :bot}, notice: "登録完了!!")
+    else
+      render '/admin/manage/bot'
+    end
   end
 
   def twitter
