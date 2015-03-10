@@ -9,7 +9,7 @@
 $ bundle exec rake twitter:tweet
 ```
 
-#modelの適用
+## modelの適用
 
 ```
 $ bundle exec rake db:migrate
