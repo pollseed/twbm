@@ -24,7 +24,7 @@ class Admin::BotController < ApplicationController
   def destroy
     bot = find_destroy_bot
     if bot.save
-      flash[:delete] =  "物理削除完了!!"
+      flash[:delete] =  "論理削除完了!!"
       redirect_to admin_bot_index_path
     else
       render 'admin/bot/index'

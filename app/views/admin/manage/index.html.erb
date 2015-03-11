@@ -1,1 +1,15 @@
-<%= link_to 'Bot登録', admin_bot_index_path, :method => 'get' %>
+<h1>管理画面</h1>
+<%= render 'layouts/breadcrumb_before' %>
+<%= render 'layouts/breadcrumb_after' %>
+<table border="1">
+  <tr>
+    <th>No.</th>
+    <th>メニュー</th>
+    <th>詳細</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td><%= link_to 'bot登録管理(仮)', admin_bot_index_path, :method => 'get' %></td>
+    <td>botの登録管理をする</td>
+  </tr>
+</table>
