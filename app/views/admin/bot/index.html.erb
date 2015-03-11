@@ -15,6 +15,7 @@
 </div>
 <hr>
 <h2>❏ 一覧</h2>
+<p style="color: green;"><%= flash[:delete] %></p>
 <div>
 <table border="1">
   <tr>
@@ -31,7 +32,7 @@
     <td><%= b.twitter_id %></td>
     <td><%= b.access_token %></td>
     <td><%= b.hash_tags %></td>
-    <td><%= link_to('削除', delete_manage_path(b), :method => :delete) %></td>
+    <td><%= link_to('削除', "bot/#{b.id}", :method => :delete) %></td>
   </tr>
 <% end %>
 </table>
