@@ -11,4 +11,8 @@ class Bot < ActiveRecord::Base
     Bot.where(:deleted => false)
   end
 
+  def self.find_by_id(id)
+    Bot.where(:id => id).first
+  end
+
 end
