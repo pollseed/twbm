@@ -1,18 +1,14 @@
 Rails.application.routes.draw do
+  # 管理機能
   namespace :admin do
     # ADMIN　TOP
     root :to => 'manage#index'
 
+    # BOT
     resources :bot
 
-    # BOT
-    # get 'manage/bot' => 'manage#bot'
-    # post 'manage/bot' => 'manage#create'
-    # delete 'manage/bot' => 'manage#delete'
-
     # TWITTER
-    get 'manage/bot/twitter' => 'manage#twitter'
-    post 'manage/bot/twitter' => 'manage#twitter'
-    delete 'manage/bot/twitter' => 'manage#twitter'
+    # 作ってないのでコメントアウト
+    # resources :twitter
   end
 end
