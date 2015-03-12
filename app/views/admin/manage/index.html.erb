@@ -1,5 +1,5 @@
-<h1>管理画面</h1>
-<%= render partial: 'layouts/breadcrumb', locals: {breadcrumb: ""} %>
+<%= render partial: 'layouts/header', locals: { h1: '管理画面', breadcrumb: '' } %>
+
 <table border="1">
   <tr>
     <th>No.</th>
@@ -12,3 +12,5 @@
     <td>botの登録管理をする</td>
   </tr>
 </table>
+
+<%= render 'layouts/footer' %>
