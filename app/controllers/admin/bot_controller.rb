@@ -1,9 +1,4 @@
 class Admin::BotController < ApplicationController
-  attr_reader :bots
-
-  def initialize
-    @bots = Bot.find_by
-  end
 
   NG = "ng".freeze
 
@@ -35,6 +30,10 @@ class Admin::BotController < ApplicationController
   end
 
   private
+    def bots
+      @bots = Bot.find_by
+    end
+
     def bot_params
       params.require(:bot).permit :twitter_name, :twitter_id, :access_token, :hash_tags
     end
