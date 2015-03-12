@@ -6,14 +6,14 @@
 <h2>❏ 登録</h2>
 
 <div style="padding-bottom: 10px;">
-<%= form_for @bot, :url => {:action => 'create'} do |f| %>
+<%= form_for @bot, url: {action: 'create'} do |f| %>
 <%= render 'shared/error_messages' %>
 <p style="color: green;"><%= notice %></p>
 <p style="color: red;"><%= alert %></p>
 <p><%= f.label :twitter_name, "twitter_name" %><%= f.text_field :twitter_name %></p>
-<p><%= f.label :twitter_name, "twitter_id" %><%= f.text_field :twitter_id %></p>
-<p><%= f.label :twitter_name, "access_token" %><%= f.text_field :access_token %></p>
-<p><%= f.label :twitter_name, "hash_tags" %><%= f.number_field :hash_tags %></p>
+<p><%= f.label :twitter_id, "twitter_id" %><%= f.text_field :twitter_id %></p>
+<p><%= f.label :access_token, "access_token" %><%= f.text_field :access_token %></p>
+<p><%= f.label :hash_tags, "hash_tags" %><%= f.number_field :hash_tags %></p>
 <%= button_tag('bot登録') %>
 <% end %>
 </div>
@@ -39,12 +39,12 @@
   <tr>
     <%= form_tag do %>
     <td><%= cnt+1 %></td>
-    <td><%= text_field :bot, :twitter_name, :value => b.twitter_name %></td>
-    <td><%= text_field :bot, :twitter_id, :value => b.twitter_id %></td>
-    <td><%= text_field :bot, :access_token, :value => b.access_token %></td>
-    <td><%= text_field :bot, :hash_tags, :value => b.hash_tags %></td>
+    <td><%= text_field :bot, :twitter_name, value: b.twitter_name %></td>
+    <td><%= text_field :bot, :twitter_id, value: b.twitter_id %></td>
+    <td><%= text_field :bot, :access_token, value: b.access_token %></td>
+    <td><%= text_field :bot, :hash_tags, value: b.hash_tags %></td>
     <td><%= button_tag('bot複製') %></td>
-    <td><%= link_to('bot削除', "bot/#{b.id}", :method => :delete) %></td>
+    <td><%= link_to('bot削除', "bot/#{b.id}", method: :delete) %></td>
     <% end %>
   </tr>
   <% end %>

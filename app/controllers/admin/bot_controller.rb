@@ -11,7 +11,7 @@ class Admin::BotController < ApplicationController
     list
     @bot = Bot.new(bot_params)
     if @bot.nil?
-      render('admin/bot/index', alert: "登録失敗!!")
+      render action: 'admin/bot/index', alert: "登録失敗!!"
     end
 
     if @bot.save
@@ -33,7 +33,11 @@ class Admin::BotController < ApplicationController
 
   private
     def bot_params
-      params.require(:bot).permit(:twitter_name, :twitter_id, :access_token, :hash_tags)
+      params.require(:bot).permit
+        :twitter_name,
+        :twitter_id,
+        :access_token,
+        :hash_tags
     end
 
     def list
