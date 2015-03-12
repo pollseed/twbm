@@ -8,11 +8,11 @@ class Bot < ActiveRecord::Base
 
   # 論理削除されていないレコードを全取得
   def self.find_by
-    Bot.where(:deleted => false)
+    Bot.where(deleted: false)
   end
 
   def self.find_by_id(id)
-    Bot.where(:id => id).first
+    Bot.where(id: id).first
   end
 
 end
