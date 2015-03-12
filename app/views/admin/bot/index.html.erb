@@ -1,0 +1,52 @@
+<h1>bot登録管理(仮)</h1>
+<%= render partial: 'layouts/breadcrumb', locals: { breadcrumb: '&nbsp;>&nbsp;<li style="display: inline;"><a href="/admin/bot">BOT管理</a></li>' } %>
+
+<hr>
+
+<h2>❏ 登録</h2>
+
+<div style="padding-bottom: 10px;">
+<%= form_for @bot, :url => {:action => 'create'} do |f| %>
+<%= render 'shared/error_messages' %>
+<p style="color: green;"><%= notice %></p>
+<p style="color: red;"><%= alert %></p>
+<p><%= f.label :twitter_name, "twitter_name" %><%= f.text_field :twitter_name %></p>
+<p><%= f.label :twitter_name, "twitter_id" %><%= f.text_field :twitter_id %></p>
+<p><%= f.label :twitter_name, "access_token" %><%= f.text_field :access_token %></p>
+<p><%= f.label :twitter_name, "hash_tags" %><%= f.number_field :hash_tags %></p>
+<%= button_tag('bot登録') %>
+<% end %>
+</div>
+
+<hr>
+
+<h2>❏ 一覧</h2>
+
+<p style="color: green;"><%= notice %></p>
+<p style="color: green;"><%= flash[:delete] %></p>
+<div>
+<table border="1">
+  <tr>
+    <th>No.</th>
+    <th>twitter_name</th>
+    <th>twitter_id</th>
+    <th>access_token</th>
+    <th>hash_tags</th>
+    <th>複製</th>
+    <th>削除</th>
+  </tr>
+  <% @bots.each_with_index do |b,cnt| %>
+  <tr>
+    <%= form_tag do %>
+    <td><%= cnt+1 %></td>
+    <td><%= text_field :bot, :twitter_name, :value => b.twitter_name %></td>
+    <td><%= text_field :bot, :twitter_id, :value => b.twitter_id %></td>
+    <td><%= text_field :bot, :access_token, :value => b.access_token %></td>
+    <td><%= text_field :bot, :hash_tags, :value => b.hash_tags %></td>
+    <td><%= button_tag('bot複製') %></td>
+    <td><%= link_to('bot削除', "bot/#{b.id}", :method => :delete) %></td>
+    <% end %>
+  </tr>
+  <% end %>
+</table>
+</div>
