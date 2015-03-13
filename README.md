@@ -30,6 +30,9 @@ $ bundle exec rake db:migrate
 ## develop
 基本的にはslack上でやりとりする。シクレキーなどが入ってくるようなものは別途管理する必要ある
 
+## pullrequest
+基本的にはpullrequest
+
 ```
 ├── app
 │   ├── assets
