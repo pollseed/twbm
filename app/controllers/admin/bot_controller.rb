@@ -1,18 +1,16 @@
 class Admin::BotController < ApplicationController
 
-  NG = "ng"
+  NG = "ng".freeze
 
   def index
-    list
+    bots
     @bot = Bot.new
   end
 
   def create
-    list
+    bots
     @bot = Bot.new(bot_params)
-    if @bot.nil?
-      render('admin/bot/index', alert: "登録失敗!!")
-    end
+    render action: 'admin/bot/index', alert: "登録失敗!!" if @bot.nil?
 
     if @bot.save
       redirect_to(admin_bot_index_path, notice: "登録完了!!")
@@ -32,21 +30,21 @@ class Admin::BotController < ApplicationController
   end
 
   private
-    def bot_params
-      params.require(:bot).permit(:twitter_name, :twitter_id, :access_token, :hash_tags)
-    end
-
-    def list
+    def bots
       @bots = Bot.find_by
     end
 
+    def bot_params
+      params.require(:bot).permit :twitter_name, :twitter_id, :access_token, :hash_tags
+    end
+
     def find_destroy_bot
-      bot = Bot.find_by_id(params[:id])
-      bot.twitter_id = bot.twitter_id.blank? ? NG : bot.twitter_id
-      bot.twitter_name = bot.twitter_name.blank? ? NG : bot.twitter_name
-      bot.access_token = bot.access_token.blank? ? NG : bot.access_token
-      bot.hash_tags = bot.hash_tags.blank? ? NG : bot.hash_tags
-      bot.deleted = true
-      bot
+      Bot.find_by_id(params[:id]).tap do |bot|
+        bot.twitter_id = bot.twitter_id.blank? ? NG : bot.twitter_id
+        bot.twitter_name = bot.twitter_name.blank? ? NG : bot.twitter_name
+        bot.access_token = bot.access_token.blank? ? NG : bot.access_token
+        bot.hash_tags = bot.hash_tags.blank? ? NG : bot.hash_tags
+        bot.deleted = true
+      end
     end
 end
