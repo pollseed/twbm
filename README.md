@@ -27,6 +27,9 @@ $ bundle exec rake db:migrate
 * admin始まりのものが管理機能となる
 * job始まりのものがバッチ機能となる
 
+## develop
+基本的にはslack上でやりとりする。シクレキーなどが入ってくるようなものは別途管理する必要ある
+
 ```
 ├── app
 │   ├── assets
