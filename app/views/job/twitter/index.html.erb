@@ -1,0 +1,16 @@
+<h1>TwitterTestView</h1>
+
+<hr>
+
+<h2>❏ CreateTest</h2>
+
+<div style="padding-bottom: 10px;">
+<%= form_tag "/twitter/update" do %>
+<p>Consumer Key<%= f.text_field :con_key %></p>
+<p>Consumer Secret<%= f.text_field :con_sec %></p>
+<%= button_tag('bot登録') %>
+<% end %>
+</div>
+
+
+</div>

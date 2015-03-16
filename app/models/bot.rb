@@ -4,6 +4,7 @@ class Bot < ActiveRecord::Base
   validates :twitter_name, presence: true
   validates :twitter_id, presence: true
   validates :access_token, presence: true
+  validates :access_secret, presence: true
   validates :hash_tags, presence: true
 
   # 論理削除されていないレコードを全取得
