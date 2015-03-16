@@ -6,6 +6,8 @@
 
 # Ignore bundler config.
 /.bundle
+/vendor/bundle 
+# とはいえGemfile.lockは共通化しておかないとデプロイ時にずれのでgitで管理するのが公式によるところ
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
