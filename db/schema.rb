@@ -11,16 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150310151917) do
+ActiveRecord::Schema.define(version: 20150316125910) do
 
   create_table "bots", force: :cascade do |t|
     t.string   "twitter_name"
     t.string   "twitter_id"
     t.string   "access_token"
-    t.boolean  "deleted",      default: false
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.boolean  "deleted",       default: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.integer  "hash_tags"
+    t.integer  "acc_key"
+    t.integer  "acc_sec"
+    t.string   "access_secret"
   end
 
   create_table "hash_tags", force: :cascade do |t|

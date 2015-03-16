@@ -2,6 +2,8 @@
 
 <h2>❏ 登録</h2>
 
+<%= link_to "Sign in with Twitter", "/auth/twitter" %>
+
 <div style="padding-bottom: 10px;">
   <%= form_for @bot, url: {action: 'create'} do |f| %>
   <%= render 'shared/error_messages' %>
@@ -9,10 +11,21 @@
   <p style="color: red;"><%= alert %></p>
   <p><%= f.label :twitter_name, "twitter_name" %><%= f.text_field :twitter_name %></p>
   <p><%= f.label :twitter_id, "twitter_id" %><%= f.text_field :twitter_id %></p>
-  <p><%= f.label :access_token, "access_token" %><%= f.text_field :access_token %></p>
   <p><%= f.label :hash_tags, "hash_tags" %><%= f.number_field :hash_tags %></p>
   <%= button_tag('bot登録') %>
   <% end %>
+</div>
+
+<hr>
+
+<h2>❏ TweetTest</h2>
+
+<div style="padding-bottom: 10px;">
+<%= form_tag "/bot/update" do %>
+<p>Bot id<%= text_field :tweet, :bot_id %></p>
+<p>Tweet<%= text_field :tweet, :content %></p>
+<%= button_tag('Tweet') %>
+<% end %>
 </div>
 
 <hr>
@@ -25,10 +38,12 @@
   <table border="1">
     <tr>
       <th>No.</th>
+      <th>id</th>
       <th>twitter_name</th>
       <th>twitter_id</th>
-      <th>access_token</th>
       <th>hash_tags</th>
+      <th>access_token</th>
+      <th>access_secret</th>
       <th>複製</th>
       <th>削除</th>
     </tr>
@@ -36,10 +51,12 @@
     <tr>
       <%= form_tag do %>
       <td><%= cnt+1 %></td>
+      <td><%= b.id %></td>
       <td><%= text_field :bot, :twitter_name, value: b.twitter_name %></td>
       <td><%= text_field :bot, :twitter_id, value: b.twitter_id %></td>
-      <td><%= text_field :bot, :access_token, value: b.access_token %></td>
       <td><%= text_field :bot, :hash_tags, value: b.hash_tags %></td>
+      <td><%= b.access_token %></td>
+      <td><%= b.access_secret %></td>
       <td><%= button_tag('bot複製') %></td>
       <td><%= link_to('bot削除', "bot/#{b.id}", method: :delete) %></td>
       <% end %>

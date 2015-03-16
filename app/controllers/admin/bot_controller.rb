@@ -1,3 +1,5 @@
+require 'oauth'
+
 class Admin::BotController < ApplicationController
 
   NG = "ng".freeze
@@ -7,9 +9,36 @@ class Admin::BotController < ApplicationController
     @bot = Bot.new
   end
 
+  def update
+    parameters = params.require(:tweet).permit :bot_id, :content
+    bot = Bot.find_by_id(parameters[:bot_id])
+
+    puts "bot_id" + parameters[:bot_id]
+
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key        = Settings.twitter.consumer_key
+      config.consumer_secret     = Settings.twitter.consumer_secret
+      config.access_token        = bot.access_token
+      config.access_token_secret = bot.access_secret
+    end
+
+    puts "content" + parameters[:content]
+
+
+    client.update(parameters[:content])
+
+    redirect_to "/admin/bot"
+  end
+
   def create
     bots
-    @bot = Bot.new(bot_params)
+
+    paramerters = bot_params
+
+    paramerters[:access_token] = session[:access_token]
+    paramerters[:access_secret] = session[:access_secret]
+
+    @bot = Bot.new(paramerters)
     render action: 'admin/bot/index', alert: "登録失敗!!" if @bot.nil?
 
     if @bot.save
@@ -29,13 +58,23 @@ class Admin::BotController < ApplicationController
     end
   end
 
+  def callback
+    auth = request.env["omniauth.auth"]
+    token = auth[:credentials]
+
+    session[:access_token] = token[:token]
+    session[:access_secret] = token[:secret]
+
+    redirect_to "/admin/bot"
+  end
+
   private
     def bots
       @bots = Bot.find_by
     end
 
     def bot_params
-      params.require(:bot).permit :twitter_name, :twitter_id, :access_token, :hash_tags
+      params.require(:bot).permit :twitter_name, :twitter_id, :hash_tags
     end
 
     def find_destroy_bot
