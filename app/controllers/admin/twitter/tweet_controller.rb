@@ -1,4 +1,4 @@
-class Admin::TwitterController < ApplicationController
+class Admin::Twitter::TweetController < ApplicationController
   def create
     update_twitter_client(tweet_params)
     redirect_to admin_bot_index_path

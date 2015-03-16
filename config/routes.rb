@@ -9,7 +9,9 @@ Rails.application.routes.draw do
     resources :bot
 
     # TWITTER
-    resources :twitter
+    namespace :twitter do
+      resources :tweet
+    end
   end
 
   # auth
