@@ -1,3 +1,5 @@
+require 'oauth'
+
 class Admin::BotController < ApplicationController
 
   NG = "ng".freeze
@@ -9,10 +11,11 @@ class Admin::BotController < ApplicationController
 
   def create
     bots
-    @bot = Bot.new(bot_params)
-    render action: 'admin/bot/index', alert: "登録失敗!!" if @bot.nil?
 
-    if @bot.save
+    bot = set_twitter_info
+    render action: 'admin/bot/index', alert: "登録失敗!!" if bot.nil?
+
+    if bot.save
       redirect_to(admin_bot_index_path, notice: "登録完了!!")
     else
       render 'admin/bot/index'
@@ -29,13 +32,30 @@ class Admin::BotController < ApplicationController
     end
   end
 
+  def callback
+    auth = request.env["omniauth.auth"]
+    token = auth[:credentials]
+
+    session[:access_token] = token[:token]
+    session[:access_secret] = token[:secret]
+
+    redirect_to admin_bot_index_path
+  end
+
   private
     def bots
       @bots = Bot.find_by
     end
 
     def bot_params
-      params.require(:bot).permit :twitter_name, :twitter_id, :access_token, :hash_tags
+      params.require(:bot).permit :twitter_name, :twitter_id, :hash_tags
+    end
+
+    def set_twitter_info
+      bot = Bot.new(bot_params)
+      bot.access_token = session[:access_token]
+      bot.access_secret = session[:access_secret]
+      bot
     end
 
     def find_destroy_bot

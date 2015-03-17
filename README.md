@@ -23,6 +23,23 @@ $ bundle exec rake db:migrate
 以下は、このpjのadminとjobの分け方サンプル
 なぜadminとjobを一緒にしているのかはgoogledocの通り
 
+### admin
+* 管理機能
+* 変わった使い方は今のところない
+
+### job
+* cronで起動する形を基本形態とする
+* config/schedule.rbを使う→job製作者が適宜編集する
+
+```
+# copy cron
+$ bundle exec whenever -w
+
+# remove cron
+$ bundle exec whenever -c
+
+```
+
 
 ## routes
 * admin始まりのものが管理機能となる
@@ -30,6 +47,8 @@ $ bundle exec rake db:migrate
 
 ## develop
 基本的にはslack上でやりとりする。シクレキーなどが入ってくるようなものは別途管理する必要ある
+
+* rails warnを出さないように気をつける→コンソールでwarn表示がないか確認(当然errorはありえない)
 
 ## pullrequest
 基本的にはpullrequest

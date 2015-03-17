@@ -1,0 +1,16 @@
+defaults: &defaults
+
+development:
+  <<: *defaults
+  twitter:
+    consumer_key: CTGO18drqCEpTMbPhYucIV3Hc
+    consumer_secret: 90EU6sv8Bw3PRgM8H0yLrAnXoo8jXZavVx1FsibiRe1DzQAlYw
+
+test:
+  <<: *defaults
+  twitter:
+    consumer_key: CTGO18drqCEpTMbPhYucIV3Hc
+    consumer_secret: 90EU6sv8Bw3PRgM8H0yLrAnXoo8jXZavVx1FsibiRe1DzQAlYw
+
+production:
+  <<: *defaults

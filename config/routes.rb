@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   # 管理機能
   namespace :admin do
     # ADMIN　TOP
@@ -8,7 +9,11 @@ Rails.application.routes.draw do
     resources :bot
 
     # TWITTER
-    # 作ってないのでコメントアウト
-    # resources :twitter
+    namespace :twitter do
+      resources :tweet
+    end
   end
+
+  # auth
+  match '/auth/twitter/callback', to: 'admin/bot#callback', via: 'get'
 end
