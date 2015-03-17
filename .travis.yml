@@ -6,7 +6,7 @@ rvm:
   - jruby-head
 bundler_args: --without development --deployment
 cache: bundler
-script: bundle exec rake spec
+script: bundle exec rspec --color spec --format progress
 branches:
   only:
     - master
