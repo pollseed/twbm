@@ -30,8 +30,12 @@ group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
+end
+
+group :test do
   gem "test-unit"
   gem "minitest"
   gem 'selenium-webdriver', '2.35.1'
   gem 'capybara'
+  gem "shoulda-matchers", "~> 2.6.0"
 end

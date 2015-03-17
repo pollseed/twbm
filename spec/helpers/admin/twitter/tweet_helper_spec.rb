@@ -10,6 +10,6 @@ require 'spec_helper'
 #     end
 #   end
 # end
-describe Admin::Twitter::TweetHelper do
+describe Admin::Twitter::TweetHelper, type: :admin do
   # pending "add some examples to (or delete) #{__FILE__}"
 end
