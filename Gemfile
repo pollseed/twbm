@@ -33,7 +33,7 @@ end
 
 group :test do
   gem "test-unit"
-  gem "minitest"
+  gem "minitest", :require => false
   gem 'selenium-webdriver', '2.35.1'
   gem 'capybara'
 end
