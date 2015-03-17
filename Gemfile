@@ -24,12 +24,14 @@ gem "tweetstream"
 gem 'whenever', :require => false
 
 group :development, :test do
+  gem 'rspec'
   gem 'rspec-rails'
   gem "better_errors"
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem "test-unit"
+  gem "minitest"
   gem 'selenium-webdriver', '2.35.1'
   gem 'capybara'
 end
