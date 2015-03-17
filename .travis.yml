@@ -1,6 +1,11 @@
 language: ruby
 rvm:
   - 2.2.1
+  - ruby-head
+  - rbx-2
+  - jruby-head
+bundler_args: --without development --deployment
+cache: bundler
 script: bundle exec rake spec
 branches:
   only:
