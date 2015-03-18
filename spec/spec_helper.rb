@@ -7,6 +7,14 @@ require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/rspec'
 
+if ENV['CI']
+  require 'coveralls'
+  Coveralls.wear!
+
+  SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[Coveralls::SimpleCov::Formatter]
+  SimpleCov.start 'test_frameworks'
+end
+
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
