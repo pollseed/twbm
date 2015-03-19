@@ -5,7 +5,6 @@
 [![Join the chat at https://gitter.im/pollseed/twbm](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/pollseed/twbm?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/pollseed/twbm.svg?branch=develop)](https://travis-ci.org/pollseed/twbm)
 [![Circle CI](https://circleci.com/gh/pollseed/twbm/tree/develop.svg?style=svg)](https://circleci.com/gh/pollseed/twbm/tree/develop)
-[![Dependency Status](https://gemnasium.com/pollseed/twbm.svg)](https://gemnasium.com/pollseed/twbm)
 
 1. [twitter developer](https://apps.twitter.com/)で登録後キーなどを取得
 2. キーをソースに埋め込み
