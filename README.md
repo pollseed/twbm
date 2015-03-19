@@ -7,6 +7,7 @@
 [![Build Status](https://travis-ci.org/pollseed/twbm.svg)](https://travis-ci.org/pollseed/twbm)
 [![Code Climate](https://codeclimate.com/github/pollseed/twbm/badges/gpa.svg)](https://codeclimate.com/github/pollseed/twbm)
 [![Dependency Status](https://gemnasium.com/pollseed/twbm.svg)](https://gemnasium.com/pollseed/twbm)
+[![Inline docs](http://inch-ci.org/github/pollseed/twbm.svg?branch=master&style=shields)](http://inch-ci.org/github/pollseed/twbm)
 
 
 1. [twitter developer](https://apps.twitter.com/)で登録後キーなどを取得
