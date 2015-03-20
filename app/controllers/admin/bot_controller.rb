@@ -6,7 +6,7 @@ class Admin::BotController < ApplicationController
 
   def index
     bots
-    @bot = Bot.new
+    bot_new
   end
 
   def create
@@ -18,6 +18,7 @@ class Admin::BotController < ApplicationController
     if bot.save
       redirect_to(admin_bot_index_path, notice: "登録完了!!")
     else
+      bot_new
       render 'admin/bot/index'
     end
   end
@@ -43,6 +44,9 @@ class Admin::BotController < ApplicationController
   end
 
   private
+    def bot_new
+      @bot = Bot.new
+    end
     def bots
       @bots = Bot.find_by
     end
