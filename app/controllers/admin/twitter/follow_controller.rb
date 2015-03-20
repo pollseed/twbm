@@ -21,7 +21,7 @@ class Admin::Twitter::FollowController < ApplicationController
 
       count = 0
 
-      client.search(params[:word], :result_type => "recent", :lang => "ja").take(10).each do |tweet|
+      client.search(params[:word], :result_type => "recent", :lang => "ja").take(1).each do |tweet|
         client.follow(tweet.user.id)
       end
     end
