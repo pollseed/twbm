@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     # TWITTER
     namespace :twitter do
       resources :tweet
+      resources :follow
     end
   end
 

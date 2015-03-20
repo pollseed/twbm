@@ -1,15 +1,15 @@
-class Admin::Twitter::TweetController < ApplicationController
+class Admin::Twitter::FollowController < ApplicationController
   def create
-    update_twitter_client(tweet_params)
+    follow_twitter_client(follow_params)
     redirect_to admin_bot_index_path
   end
 
   private
-    def tweet_params
-      params.require(:tweet).permit :bot_id, :content
+    def follow_params
+      params.require(:follow).permit :bot_id, :word
     end
 
-    def update_twitter_client(params)
+    def follow_twitter_client(params)
       bot = Bot.find_by_id(params[:bot_id])
 
       client = Twitter::REST::Client.new(
@@ -19,6 +19,10 @@ class Admin::Twitter::TweetController < ApplicationController
         access_token_secret: bot.access_secret,
       )
 
-      client.update(params[:content])
+      count = 0
+
+      client.search(params[:word], :result_type => "recent", :lang => "ja").take(10).each do |tweet|
+        client.follow(tweet.user.id)
+      end
     end
 end
