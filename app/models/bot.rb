@@ -1,5 +1,5 @@
 class Bot < ActiveRecord::Base
-  belongs_to :hash_tag
+  has_many :bot_hash_tag_rels
 
   validates :twitter_name, presence: true
   validates :twitter_id, presence: true

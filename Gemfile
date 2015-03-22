@@ -12,6 +12,9 @@ gem 'jquery-rails', '~> 4.0.0'
 gem 'turbolinks', '~> 2.5.0'
 gem 'jbuilder', '~> 2.2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'less-rails', '~> 2.6.0'
+gem 'twitter-bootstrap-rails', '~> 3.2.0'
+gem 'therubyracer', '~> 0.12.0'
 
 gem 'omniauth', '~> 1.2.0'
 gem 'omniauth-twitter', '~> 1.1.0'
@@ -24,19 +27,19 @@ gem "tweetstream", '~> 2.6.0'
 gem 'whenever', '~> 0.9.0', :require => false
 
 group :development, :test do
-  gem 'rspec'
-  gem 'rspec-rails'
-  gem "better_errors"
-  gem 'byebug'
+  gem 'rspec', '~> 3.0'
+  gem 'rspec-rails', '~> 3.0'
+  gem 'better_errors', '~> 2.0'
+  gem 'byebug', '~> 4.0'
   gem 'web-console', '~> 2.0'
-  gem 'spring'
+  gem 'spring', '~> 1.0'
 end
 
 group :test do
-  gem "test-unit"
-  gem "minitest"
-  gem 'selenium-webdriver', '2.35.1'
-  gem 'capybara'
-  gem "shoulda-matchers", "~> 2.6.0"
+  gem 'test-unit', '~> 3.0'
+  gem 'minitest', '~> 5.0'
+  gem 'selenium-webdriver', ' ~> 2.0'
+  gem 'capybara', '~> 2.0'
+  gem 'shoulda-matchers', '~> 2.0'
   # gem 'coveralls', require: false
 end
