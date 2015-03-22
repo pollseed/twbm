@@ -30,6 +30,18 @@
 
 <hr>
 
+<h2>❏ FollowTest</h2>
+
+<div style="padding-bottom: 10px;">
+<%= form_tag "/admin/twitter/follow" do %>
+<p>Bot id<%= text_field :follow, :bot_id %></p>
+<p>Tweet<%= text_field :follow, :word %></p>
+<%= button_tag('Follow') %>
+<% end %>
+</div>
+
+<hr>
+
 <h2>❏ 一覧</h2>
 
 <div>
