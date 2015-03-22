@@ -37,7 +37,7 @@
   <%= form_tag "/admin/twitter/follow" do %>
   <p>Bot id<%= text_field :follow, :bot_id %></p>
   <p>Tweet<%= text_field :follow, :word %></p>
-  <%= button_tag('Follow') %>
+  <%= button_tag('Follow', class: "btn btn-info") %>
   <% end %>
   </div>
 
