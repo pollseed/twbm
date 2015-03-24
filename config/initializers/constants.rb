@@ -1,10 +1,14 @@
-# controllers
+module Controllers
+end
 
-# models
+module Helpers
+end
+
+module Models
 ## RealtimeBotHashTagTracking
-### bot_type
-module BotType
-  TWEET = 1
-  RETWEET = 2
-  FOLLOW = 3
+  module BotType
+    TWEET = 1
+    RETWEET = 2
+    FOLLOW = 3
+  end
 end
