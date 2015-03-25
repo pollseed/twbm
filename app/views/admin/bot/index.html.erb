@@ -56,7 +56,6 @@
           <th>hash_tags</th>
           <th>access_token</th>
           <th>access_secret</th>
-          <th>複製</th>
           <th>削除</th>
         </tr>
         <% @bots.each_with_index do |b,cnt| %>
@@ -64,12 +63,11 @@
           <%= form_tag do %>
           <td><%= cnt+1 %></td>
           <td><%= b.id %></td>
-          <td><%= text_field :bot, :twitter_name, value: b.twitter_name %></td>
-          <td><%= text_field :bot, :twitter_id, value: b.twitter_id %></td>
-          <td><%= text_field :bot, :hash_tags, value: b.hash_tags %></td>
+          <td><%= b.twitter_name %></td>
+          <td><%= b.twitter_id %></td>
+          <td><%= b.hash_tags %></td>
           <td><%= b.access_token %></td>
           <td><%= b.access_secret %></td>
-          <td><%= button_tag('bot複製', class: "btn btn-info") %></td>
           <td><%= link_to('bot削除', "bot/#{b.id}", method: :delete) %></td>
           <% end %>
         </tr>

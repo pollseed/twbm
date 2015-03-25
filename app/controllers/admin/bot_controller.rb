@@ -1,8 +1,6 @@
 require 'oauth'
 
 class Admin::BotController < ApplicationController
-  NG = "ng".freeze
-
   def index
     bots
     bot_new
@@ -64,10 +62,10 @@ class Admin::BotController < ApplicationController
 
     def find_destroy_bot
       Bot.find_by_id(params[:id]).tap do |bot|
-        bot.twitter_id = bot.twitter_id.blank? ? NG : bot.twitter_id
-        bot.twitter_name = bot.twitter_name.blank? ? NG : bot.twitter_name
-        bot.access_token = bot.access_token.blank? ? NG : bot.access_token
-        bot.hash_tags = bot.hash_tags.blank? ? NG : bot.hash_tags
+        bot.twitter_id = bot.twitter_id.blank? ? Controllers::Bot::NG : bot.twitter_id
+        bot.twitter_name = bot.twitter_name.blank? ? Controllers::Bot::NG : bot.twitter_name
+        bot.access_token = bot.access_token.blank? ? Controllers::Bot::NG : bot.access_token
+        bot.hash_tags = bot.hash_tags.blank? ? Controllers::Bot::NG : bot.hash_tags
         bot.deleted = true
       end
     end

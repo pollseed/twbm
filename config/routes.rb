@@ -6,12 +6,12 @@ Rails.application.routes.draw do
     root to: 'manage#index'
 
     # BOT
-    resources :bot
+    resources :bot, :only => [:index, :create, :destroy]
 
     # TWITTER
     namespace :twitter do
-      resources :tweet
-      resources :follow
+      resources :tweet, :only => [:create]
+      resources :follow, :only => [:create]
     end
   end
 
