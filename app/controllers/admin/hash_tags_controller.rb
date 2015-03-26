@@ -14,7 +14,6 @@ class Admin::HashTagsController < ApplicationController
     end
   end
 
-
   private
     def hash_tag_params
       params.require(:hash_tag).permit :hash_tag
