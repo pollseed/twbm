@@ -23,6 +23,16 @@ class Admin::Twitter::FollowController < ApplicationController
 
       client.search(params[:word], :result_type => "recent", :lang => "ja").take(1).each do |tweet|
         client.follow(tweet.user.id)
+
+        tracking_params = {
+          bot_type: Models::BotType::FOLLOW,
+          content: tweet.user.id
+          #bot_hash_tag_rels_id: "ハッシュと紐付け後登録"
+        }
+
+        tracking = RealtimeBotHashTagTracking.new(tracking_params)
+
+        tracking.save
       end
     end
 end

@@ -20,5 +20,14 @@ class Admin::Twitter::TweetController < ApplicationController
       )
 
       client.update(params[:content])
+
+      tracking_params = {
+        bot_type: Models::BotType::TWEET,
+        content: params[:content]
+      }
+
+      tracking = RealtimeBotHashTagTracking.new(tracking_params)
+
+      tracking.save
     end
 end
