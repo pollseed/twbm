@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     # BOT
     resources :bot, :only => [:index, :create, :destroy]
 
+    # HASH_TAG
+    resources :hash_tags, :only => [:index, :create, :destroy]
+
     # TWITTER
     namespace :twitter do
       resources :tweet, :only => [:create]
