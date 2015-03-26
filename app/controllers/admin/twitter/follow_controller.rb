@@ -1,4 +1,6 @@
 class Admin::Twitter::FollowController < ApplicationController
+  include TwitterConcern
+
   def create
     follow_twitter_client(follow_params)
     redirect_to admin_bot_index_path
@@ -12,27 +14,11 @@ class Admin::Twitter::FollowController < ApplicationController
     def follow_twitter_client(params)
       bot = Bot.find_by_id(params[:bot_id])
 
-      client = Twitter::REST::Client.new(
-        consumer_key:        Settings.twitter.consumer_key,
-        consumer_secret:     Settings.twitter.consumer_secret,
-        access_token:        bot.access_token,
-        access_token_secret: bot.access_secret,
-      )
+      client = create_client(bot)
 
-      count = 0
-
-      client.search(params[:word], :result_type => "recent", :lang => "ja").take(1).each do |tweet|
+      client.search(params[:word], result_type: "recent", lang: "ja").take(1).each do |tweet|
         client.follow(tweet.user.id)
-
-        tracking_params = {
-          bot_type: Models::BotType::FOLLOW,
-          content: tweet.user.id
-          #bot_hash_tag_rels_id: "ハッシュと紐付け後登録"
-        }
-
-        tracking = RealtimeBotHashTagTracking.new(tracking_params)
-
-        tracking.save
+        save_tracking(Models::BotType::FOLLOW, tweet.user.id)
       end
     end
 end

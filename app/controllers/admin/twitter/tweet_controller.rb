@@ -1,4 +1,6 @@
 class Admin::Twitter::TweetController < ApplicationController
+  include TwitterConcern
+
   def create
     update_twitter_client(tweet_params)
     redirect_to admin_bot_index_path
@@ -12,22 +14,11 @@ class Admin::Twitter::TweetController < ApplicationController
     def update_twitter_client(params)
       bot = Bot.find_by_id(params[:bot_id])
 
-      client = Twitter::REST::Client.new(
-        consumer_key:        Settings.twitter.consumer_key,
-        consumer_secret:     Settings.twitter.consumer_secret,
-        access_token:        bot.access_token,
-        access_token_secret: bot.access_secret,
-      )
+      content = params[:content]
 
-      client.update(params[:content])
+      client = create_client(bot)
+      client.update(content)
 
-      tracking_params = {
-        bot_type: Models::BotType::TWEET,
-        content: params[:content]
-      }
-
-      tracking = RealtimeBotHashTagTracking.new(tracking_params)
-
-      tracking.save
+      save_tracking(Models::BotType::TWEET, content)
     end
 end

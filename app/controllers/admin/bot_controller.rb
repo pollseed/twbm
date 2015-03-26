@@ -1,6 +1,8 @@
 require 'oauth'
 
 class Admin::BotController < ApplicationController
+  include BotConcern
+
   def index
     bots
     bot_new
@@ -41,14 +43,6 @@ class Admin::BotController < ApplicationController
   end
 
   private
-    def bot_new
-      @bot = Bot.new
-    end
-
-    def bots
-      @bots = Bot.find_by
-    end
-
     def bot_params
       params.require(:bot).permit :twitter_name, :twitter_id, :hash_tags
     end
