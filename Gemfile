@@ -41,5 +41,6 @@ group :test do
   gem 'selenium-webdriver', ' ~> 2.0'
   gem 'capybara', '~> 2.0'
   gem 'shoulda-matchers', '~> 2.0'
+  gem 'rails-erd'
   # gem 'coveralls', require: false
 end

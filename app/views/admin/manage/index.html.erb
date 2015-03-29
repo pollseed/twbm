@@ -1,18 +1,23 @@
 <%= render partial: 'layouts/header', locals: { h1: '管理画面', breadcrumb: '' } %>
 
 <div class="container">
-<table  class="table table-striped table-bordered">
-  <tr>
-    <th>No.</th>
-    <th>メニュー</th>
-    <th>詳細</th>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td><%= link_to 'bot登録管理(仮)', admin_bot_index_path, method: 'get' %></td>
-    <td>botの登録管理をする</td>
-  </tr>
-</table>
+  <table  class="table table-striped table-bordered">
+    <tr>
+      <th>No.</th>
+      <th>メニュー</th>
+      <th>詳細</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td><%= link_to 'bot登録管理', admin_bot_index_path, method: 'get' %></td>
+      <td>botの登録管理をする</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><%= link_to 'hash_tag登録管理', admin_hash_tags_path, method: 'get' %></td>
+      <td>hash_tagの登録管理をする</td>
+    </tr>
+  </table>
 </div>
 
 <%= render 'layouts/footer' %>

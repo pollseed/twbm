@@ -22,7 +22,17 @@ $ bundle exec rake twitter:tweet
 
 ```
 $ bundle exec rake db:migrate
+$ RAILS_ENV=test bundle exec rake db:migrate --trace
+$ bundle exec rake spec
 ```
+## trackings
+* 分析機能は、このリポジトリでは作らない。サーバ別立てし、そこで展開する機能とする
+* 現状、bot_hash_tagsの行動を全てrealtime_{行動するテーブル名}に保管してほしい。
+ 
+### analysisプロジェクトについて
+* このプロジェクトでは、基本realtimeしか関連しない
+* データを分析して展開する機能として君臨する
+* クローズ機能しかないが、今後はAPIなどに貢献できたらいいという構想がある
 
 ## directory
 以下は、このpjのadminとjobの分け方サンプル
