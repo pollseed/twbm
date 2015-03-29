@@ -1,0 +1,20 @@
+<%= render partial: 'layouts/header', locals: { h1: 'BotHash紐付け管理', breadcrumb: '<li class="active">BOT-HASH関連管理</li>' } %>
+
+<div class="container">
+  <h2>❏ 登録</h2>
+
+  <div style="padding-bottom: 10px;">
+    <%= form_for @bot_hash_tag_rel, url: {action: 'create'} do |f| %>
+    <p style="color: green;"><%= notice %></p>
+    <p style="color: red;"><%= alert %></p>
+    <p><%= f.label :bot_id, "bot_id" %><%= f.text_field :bot_id %></p>
+    <p><%= f.label :hash_tag_id, "hash_tag_id" %><%= f.text_field :hash_tag_id %></p>
+    <%= button_tag('BotHash紐付け登録', class: "btn btn-info") %>
+    <% end %>
+  </div>
+
+  <hr>
+
+</div>
+
+<%= render 'layouts/footer' %>
