@@ -24,7 +24,9 @@
           <th>No.</th>
           <th>id</th>
           <th>BotID</th>
+          <th>Twitter名</th>
           <th>HashTagId</th>
+          <th>HashTag</th>
         </tr>
         <% if bot_hash_tag_rels? %>
           <% @bot_hash_tag_rels.each_with_index do |b,cnt| %>
@@ -32,7 +34,9 @@
             <td><%= cnt+1 %></td>
             <td><%= b.id %></td>
             <td><%= b.bot_id %></td>
+            <td><%= b.bot.twitter_name %></td>
             <td><%= b.hash_tag_id %></td>
+            <td><%= b.hash_tag.hash_tag %></td>
           </tr>
           <% end %>
         <% end %>
