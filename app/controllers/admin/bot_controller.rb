@@ -4,13 +4,10 @@ class Admin::BotController < ApplicationController
   include BotConcern
 
   def index
-    bots
     bot_new
   end
 
   def create
-    bots
-
     bot = set_twitter_info
     render action: 'admin/bot/index', alert: "登録失敗!!" if bot.nil?
 

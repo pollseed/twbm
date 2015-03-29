@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150324185456) do
+ActiveRecord::Schema.define(version: 20150329103440) do
 
   create_table "bot_hash_tag_rels", force: :cascade do |t|
     t.integer  "bot_id"
     t.integer  "hash_tag_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.boolean  "deleted",     default: false
   end
 
   create_table "bots", force: :cascade do |t|
@@ -28,6 +29,8 @@ ActiveRecord::Schema.define(version: 20150324185456) do
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.integer  "hash_tags"
+    t.integer  "acc_key"
+    t.integer  "acc_sec"
     t.string   "access_secret"
   end
 
