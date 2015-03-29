@@ -11,6 +11,9 @@ Rails.application.routes.draw do
     # HASH_TAG
     resources :hash_tags, :only => [:index, :create, :destroy]
 
+    # BOT_HASH_TAG_REL
+    resources :bot_hash_tag_rels, :only => [:index, :create, :destroy]
+
     # TWITTER
     namespace :twitter do
       resources :tweet, :only => [:create]

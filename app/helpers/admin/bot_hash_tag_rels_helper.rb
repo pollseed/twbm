@@ -1,0 +1,2 @@
+module Admin::BotHashTagRelsHelper
+end
