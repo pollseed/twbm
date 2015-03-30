@@ -12,7 +12,6 @@
     <p style="color: red;"><%= alert %></p>
     <p><%= f.label :twitter_name, "twitter_name" %><%= f.text_field :twitter_name %></p>
     <p><%= f.label :twitter_id, "twitter_id" %><%= f.text_field :twitter_id %></p>
-    <p><%= f.label :hash_tags, "hash_tags" %><%= f.number_field :hash_tags %></p>
     <%= button_tag('bot登録', class: "btn btn-info") %>
     <% end %>
   </div>
@@ -36,7 +35,6 @@
   <div style="padding-bottom: 10px;">
   <%= form_tag "/admin/twitter/follow" do %>
   <p>Bot id<%= text_field :follow, :bot_id %></p>
-  <p>Tweet<%= text_field :follow, :word %></p>
   <%= button_tag('Follow', class: "btn btn-info") %>
   <% end %>
   </div>
