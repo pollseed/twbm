@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     namespace :twitter do
       resources :tweet, :only => [:create]
       resources :follow, :only => [:create]
+      resources :retweet, :only => [:create]
     end
   end
 
