@@ -20,3 +20,4 @@
 
 # Ignore mysqlworkbench backupFile
 /db/document/*.bak
+.powenv
