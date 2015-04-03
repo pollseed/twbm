@@ -29,8 +29,6 @@ ActiveRecord::Schema.define(version: 20150329103440) do
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.integer  "hash_tags"
-    t.integer  "acc_key"
-    t.integer  "acc_sec"
     t.string   "access_secret"
   end
 

@@ -12,7 +12,6 @@
     <p style="color: red;"><%= alert %></p>
     <p><%= f.label :twitter_name, "twitter_name" %><%= f.text_field :twitter_name %></p>
     <p><%= f.label :twitter_id, "twitter_id" %><%= f.text_field :twitter_id %></p>
-    <p><%= f.label :hash_tags, "hash_tags" %><%= f.number_field :hash_tags %></p>
     <%= button_tag('bot登録', class: "btn btn-info") %>
     <% end %>
   </div>
@@ -36,7 +35,15 @@
   <div style="padding-bottom: 10px;">
   <%= form_tag "/admin/twitter/follow" do %>
   <p>Bot id<%= text_field :follow, :bot_id %></p>
-  <p>Tweet<%= text_field :follow, :word %></p>
+  <%= button_tag('Follow', class: "btn btn-info") %>
+  <% end %>
+  </div>
+
+  <h2>❏ RetweetTest</h2>
+
+  <div style="padding-bottom: 10px;">
+  <%= form_tag "/admin/twitter/retweet" do %>
+  <p>Bot id<%= text_field :retweet, :bot_id %></p>
   <%= button_tag('Follow', class: "btn btn-info") %>
   <% end %>
   </div>
@@ -66,7 +73,11 @@
             <td><%= b.id %></td>
             <td><%= b.twitter_name %></td>
             <td><%= b.twitter_id %></td>
-            <td><%= b.hash_tags %></td>
+            <td>
+              <% b.hash_tags.each do |h| %>
+                <%= h.hash_tag %>
+              <% end %>
+            </td>
             <td><%= b.access_token %></td>
             <td><%= b.access_secret %></td>
             <td><%= link_to('bot削除', "bot/#{b.id}", method: :delete) %></td>
