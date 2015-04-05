@@ -28,7 +28,7 @@ $ bundle exec rake spec
 ## trackings
 * 分析機能は、このリポジトリでは作らない。サーバ別立てし、そこで展開する機能とする
 * 現状、bot_hash_tagsの行動を全てrealtime_{行動するテーブル名}に保管してほしい。
- 
+
 ### analysisプロジェクトについて
 * このプロジェクトでは、基本realtimeしか関連しない
 * データを分析して展開する機能として君臨する
@@ -55,6 +55,17 @@ $ bundle exec whenever -c
 
 ```
 
+## Httpサーバ
+* Nginx
+※設定はslackへ
+
+## WebAppサーバ
+* Unicorn
+※設定はslackへ
+
+## Deploy
+* Capistrano
+※設定はslackへ
 
 ## routes
 * admin始まりのものが管理機能となる

@@ -40,7 +40,7 @@ class Admin::BotController < ApplicationController
 
   private
     def set_twitter_info
-      bot = Bot.new()
+      bot = Bot.new
       bot.access_token = session[:access_token]
       bot.access_secret = session[:access_secret]
       bot.twitter_id = session[:twitter_id]
@@ -68,12 +68,5 @@ class Admin::BotController < ApplicationController
 
       session[:twitter_id] = info[:nickname]
       session[:twitter_name] = info[:name]
-    end
-
-    def delete_authinfo_to_session
-      session.delete(:access_token)
-      session.delete(:access_secret)
-      session.delete(:twitter_id)
-      session.delete(:twitter_name)
     end
 end
