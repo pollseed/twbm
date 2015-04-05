@@ -10,8 +10,7 @@
     <%= render 'shared/error_messages' %>
     <p style="color: green;"><%= notice %></p>
     <p style="color: red;"><%= alert %></p>
-    <p><%= f.label :twitter_name, "twitter_name" %><%= f.text_field :twitter_name %></p>
-    <p><%= f.label :twitter_id, "twitter_id" %><%= f.text_field :twitter_id %></p>
+    <p><%= f.label :your_account, "YourAccount：" %><%= f.label :twitter_name, get_twitter_name %><%= f.label :twitter_id, get_twitter_id %></p>
     <%= button_tag('bot登録', class: "btn btn-info") %>
     <% end %>
   </div>
