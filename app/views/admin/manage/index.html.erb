@@ -7,21 +7,9 @@
       <th>メニュー</th>
       <th>詳細</th>
     </tr>
-    <tr>
-      <td>1</td>
-      <td><%= link_to 'bot登録管理', admin_bot_index_path, method: 'get' %></td>
-      <td>botの登録管理をする</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td><%= link_to 'hash_tag登録管理', admin_hash_tags_path, method: 'get' %></td>
-      <td>hash_tagの登録管理をする</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td><%= link_to 'BOT-HASH関連管理', admin_bot_hash_tag_rels_path, method: 'get' %></td>
-      <td>BOT-HASH関連の管理をする</td>
-    </tr>
+    <%= render partial: 'menu_table', locals: { number: 1, link_name: 'bot登録管理', url: admin_bot_index_path, details: 'botの登録管理をする' } %>
+    <%= render partial: 'menu_table', locals: { number: 2, link_name: 'hash_tag登録管理', url: admin_hash_tags_path, details: 'hash_tagの登録管理をする' } %>
+    <%= render partial: 'menu_table', locals: { number: 3, link_name: 'BOT-HASH関連管理', url: admin_bot_hash_tag_rels_path, details: 'BOT-HASH関連の管理をする' } %>
   </table>
 </div>
 
