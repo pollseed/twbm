@@ -8,7 +8,7 @@ class Bot < ActiveRecord::Base
   validates :access_secret, presence: true
 
   # 論理削除されていないレコードを全取得
-  def self.find_by
+  def self.find_by_alive
     Bot.where(deleted: false)
   end
 
