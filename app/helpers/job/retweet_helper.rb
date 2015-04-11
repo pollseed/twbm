@@ -1,2 +1,0 @@
-module Job::RetweetHelper
-end

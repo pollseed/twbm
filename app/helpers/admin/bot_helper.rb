@@ -4,7 +4,7 @@ module Admin::BotHelper
   end
 
   def bots
-    @bots ||= Bot.find_by
+    @bots ||= Bot.find_by_alive
   end
 
   def get_twitter_name
