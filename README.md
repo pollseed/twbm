@@ -27,7 +27,7 @@ $ bundle exec rake spec
 ```
 ## trackings
 * 分析機能は、このリポジトリでは作らない。サーバ別立てし、そこで展開する機能とする
-* 現状、bot_hash_tagsの行動を全てrealtime_{行動するテーブル名}に保管してほしい。
+* 現状、botの行動を全てrealtime_{行動するテーブル名}に保管してほしい。
 
 ### analysisプロジェクトについて
 * このプロジェクトでは、基本realtimeしか関連しない
