@@ -1,8 +1,8 @@
 lock '3.4.0'
 
-set :application, 'twbm'
+set :application, 'harmox-analytics'
 set :repo_url, 'git@github.com:pollseed/twbm.git'
-set :branch, 'master'
+set :branch, fetch(:application)
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
