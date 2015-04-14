@@ -3,11 +3,19 @@
 # It's helpful, but not entirely necessary to understand cron before proceeding.
 # http://en.wikipedia.org/wiki/Cron
 
-# ログは絶対取りたいので、devnullとかなし
-set :output, "/log/whenever.log"
+# 環境を設定
+set :environment, :development
 
-every 10.minutes do
-  rake "twitter:tweet"
+timestamp = Time.now.strftime("%Y%m%d")
+# ログは絶対取りたいので、devnullとかなし
+set :output, "log/whenever_" + timestamp + ".log"
+
+every '*/2 * * * *' do
+  rake "twitter:retweet"
+end
+
+every '*/2 * * * *' do
+  rake "twitter:follow"
 end
 
 # 以下はメモ。今後追加する時に

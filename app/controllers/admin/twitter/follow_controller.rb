@@ -16,10 +16,19 @@ class Admin::Twitter::FollowController < ApplicationController
 
       client = create_client(bot)
 
+      word = ""
+
       bot.hash_tags.each do |hash_tag|
-        client.search(hash_tag.hash_tag + " -BOT", result_type: "recent", lang: "ja", count: 1).take(1).each do |tweet|
+        word = word + " #" + hash_tag.hash_tag + ""
+      end
+
+      client.search(word + " -BOT", result_type: "recent", lang: "ja", count: 1).take(10).each do |tweet|
+        begin
           client.follow(tweet.user.id)
-          save_tracking(Models::BotType::FOLLOW, tweet.user.id, bot.id, hash_tag.id)
+          save_tracking(Models::BotType::FOLLOW, tweet.user.id, bot.id)
+          break
+        rescue
+          next
         end
       end
     end
