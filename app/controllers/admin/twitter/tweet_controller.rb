@@ -19,6 +19,6 @@ class Admin::Twitter::TweetController < ApplicationController
       client = create_client(bot)
       client.update(content)
 
-      save_tracking(Models::BotType::TWEET, content)
+      save_tracking(Models::BotType::TWEET, content, bot.id)
     end
 end
