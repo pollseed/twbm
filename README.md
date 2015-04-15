@@ -20,7 +20,7 @@ $ bundle exec rake twitter:tweet
 
 ## modelの適用
 
-```
+```.sh
 $ bundle exec rake db:migrate
 $ RAILS_ENV=test bundle exec rake db:migrate --trace
 $ bundle exec rake spec
@@ -45,14 +45,12 @@ $ bundle exec rake spec
 ### job
 * cronで起動する形を基本形態とする
 * config/schedule.rbを使う→job製作者が適宜編集する
-
-```
-# copy cron
-$ bundle exec whenever -w
-
-# remove cron
-$ bundle exec whenever -c
-
+ 
+```.sh
+$ bundle exec whenever 
+$ bundle exec crontab -e
+$ bundle exec whenever --update-crontab 
+$ bundle exec whenever --clear-crontab
 ```
 
 ## Httpサーバ
