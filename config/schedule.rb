@@ -8,6 +8,7 @@ set :environment, :development
 
 timestamp = Time.now.strftime("%Y%m%d")
 # ログは絶対取りたいので、devnullとかなし
+# ログはloggerで取る予定。想定外のエラーにはこのログでとってもいいかもしれない
 set :output, "log/whenever_" + timestamp + ".log"
 
 every '*/2 * * * *' do

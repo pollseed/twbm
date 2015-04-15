@@ -38,7 +38,7 @@ namespace :twitter do
     max_favorite_count = -1
     most_favorite_tweet = nil
 
-    timeline = client.home_timeline(count: 100, exclude_replies: true, include_rts: true)
+    timeline = client.home_timeline(count: Settings.twitter.retweet_potential_number, exclude_replies: true, include_rts: true)
 
     timeline.each do |tweet|
       if(tweet.retweeted? == false && tweet.favorite_count > max_favorite_count)
@@ -48,7 +48,6 @@ namespace :twitter do
     end
 
     client.retweet(most_favorite_tweet)
-    puts "#{Time.now.strftime("%Y-%m-%d %H:%M:%S")} retweet:::bot=#{bot.id}, content=#{most_favorite_tweet.text}"
     save_tracking(Models::BotType::RETWEET, most_favorite_tweet.text, bot.id)
   end
 
@@ -61,10 +60,9 @@ namespace :twitter do
       word = word + " #" + hash_tag.hash_tag + ""
     end
 
-    client.search(word + " -BOT", result_type: "recent", lang: "ja", count: 10).take(10).each do |tweet|
+    client.search(word + " -BOT -RT", result_type: "recent", lang: "ja", count: Settings.twitter.follow_potential_number).each do |tweet|
       unless tweet.user.following?
         client.follow(tweet.user.id)
-        puts "#{Time.now.strftime("%Y-%m-%d %H:%M:%S")} follow:::bot=#{bot.id}, content=#{tweet.user.id}"
         save_tracking(Models::BotType::FOLLOW, tweet.user.id, bot.id)
         break
       end
@@ -80,5 +78,19 @@ namespace :twitter do
 
     tracking = RealtimeBotHashTagTracking.new(tracking_params)
     tracking.save
+    write_log(bot_type, bot_id, content)
+  end
+
+  def write_log(type, bot_id, content)
+    bot_type =
+      case type
+      when Models::BotType::TWEET; :tweet
+      when Models::BotType::RETWEET;  :retweet
+      when Models::BotType::FOLLOW; :follow
+      else nil
+      end
+
+    #logはloggerを使う予定
+    puts "#{Time.now.strftime("%Y-%m-%d %H:%M:%S")} #{bot_type}:::bot=#{bot_id}, content=#{content}"
   end
 end

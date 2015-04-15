@@ -28,6 +28,6 @@ class Admin::Twitter::RetweetController < ApplicationController
 
       client.retweet(most_favorite_tweet)
 
-      save_tracking(Models::BotType::RETWEET, most_favorite_tweet.text)
+      save_tracking(Models::BotType::RETWEET, most_favorite_tweet.text, bot.id)
     end
 end
