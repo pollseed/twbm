@@ -24,6 +24,8 @@ gem "oauth", '~> 0.4.0'
 gem 'twitter', '~> 5.14.0'
 gem "tweetstream", '~> 2.6.0'
 
+gem "sprockets", '2.12.3'
+
 gem 'whenever', '~> 0.9.0', :require => false
 
 group :development, :test do
