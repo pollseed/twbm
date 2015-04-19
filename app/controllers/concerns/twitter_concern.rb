@@ -11,11 +11,11 @@ module TwitterConcern
     )
   end
 
-  def save_tracking(bot_type, content)
+  def save_tracking(bot_type, content, bot_id)
     tracking_params = {
       bot_type: bot_type,
-      content: content
-      #bot_hash_tag_rels_id: "ハッシュと紐付け後登録"
+      content: content,
+      bot_id: bot_id
     }
 
     tracking = RealtimeBotHashTagTracking.new(tracking_params)

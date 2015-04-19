@@ -4,6 +4,6 @@ module Admin::BotHashTagRelsHelper
   end
 
   def bot_hash_tag_rels
-    @bot_hash_tag_rels ||= BotHashTagRel.find_by
+    @bot_hash_tag_rels ||= BotHashTagRel.find_by_alive
   end
 end

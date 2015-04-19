@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150329103440) do
+ActiveRecord::Schema.define(version: 20150414135815) do
 
   create_table "bot_hash_tag_rels", force: :cascade do |t|
     t.integer  "bot_id"
@@ -42,12 +42,10 @@ ActiveRecord::Schema.define(version: 20150329103440) do
   create_table "realtime_bot_hash_tag_trackings", force: :cascade do |t|
     t.integer  "bot_type"
     t.text     "content"
-    t.boolean  "deleted",              default: false
-    t.integer  "bot_hash_tag_rels_id"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.boolean  "deleted",    default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "bot_id"
   end
-
-  add_index "realtime_bot_hash_tag_trackings", ["bot_hash_tag_rels_id"], name: "index_realtime_bot_hash_tag_trackings_on_bot_hash_tag_rels_id"
 
 end

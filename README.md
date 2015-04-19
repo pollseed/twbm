@@ -20,15 +20,15 @@ $ bundle exec rake twitter:tweet
 
 ## modelの適用
 
-```
+```.sh
 $ bundle exec rake db:migrate
 $ RAILS_ENV=test bundle exec rake db:migrate --trace
 $ bundle exec rake spec
 ```
 ## trackings
 * 分析機能は、このリポジトリでは作らない。サーバ別立てし、そこで展開する機能とする
-* 現状、bot_hash_tagsの行動を全てrealtime_{行動するテーブル名}に保管してほしい。
- 
+* 現状、botの行動を全てrealtime_{行動するテーブル名}に保管してほしい。
+
 ### analysisプロジェクトについて
 * このプロジェクトでは、基本realtimeしか関連しない
 * データを分析して展開する機能として君臨する
@@ -45,16 +45,25 @@ $ bundle exec rake spec
 ### job
 * cronで起動する形を基本形態とする
 * config/schedule.rbを使う→job製作者が適宜編集する
-
-```
-# copy cron
-$ bundle exec whenever -w
-
-# remove cron
-$ bundle exec whenever -c
-
+ 
+```.sh
+$ bundle exec whenever 
+$ bundle exec crontab -e
+$ bundle exec whenever --update-crontab 
+$ bundle exec whenever --clear-crontab
 ```
 
+## Httpサーバ
+* Nginx
+※設定はslackへ
+
+## WebAppサーバ
+* Unicorn
+※設定はslackへ
+
+## Deploy
+* Capistrano
+※設定はslackへ
 
 ## routes
 * admin始まりのものが管理機能となる

@@ -12,6 +12,7 @@ class Admin::BotController < ApplicationController
     render action: 'admin/bot/index', alert: "登録失敗!!" if bot.nil?
 
     if bot.save
+      delete_authinfo_to_session
       redirect_to(admin_bot_index_path, notice: "登録完了!!")
     else
       bot_new
@@ -31,23 +32,19 @@ class Admin::BotController < ApplicationController
 
   def callback
     auth = request.env["omniauth.auth"]
-    token = auth[:credentials]
 
-    session[:access_token] = token[:token]
-    session[:access_secret] = token[:secret]
+    save_authinfo_to_session(auth)
 
     redirect_to admin_bot_index_path
   end
 
   private
-    def bot_params
-      params.require(:bot).permit :twitter_name, :twitter_id, :hash_tags
-    end
-
     def set_twitter_info
-      bot = Bot.new(bot_params)
+      bot = Bot.new
       bot.access_token = session[:access_token]
       bot.access_secret = session[:access_secret]
+      bot.twitter_id = session[:twitter_id]
+      bot.twitter_name = session[:twitter_name]
       bot
     end
 
@@ -59,5 +56,17 @@ class Admin::BotController < ApplicationController
         bot.hash_tags = bot.hash_tags.blank? ? Controllers::Bot::NG : bot.hash_tags
         bot.deleted = true
       end
+    end
+
+    def save_authinfo_to_session(auth)
+      token = auth[:credentials]
+
+      session[:access_token] = token[:token]
+      session[:access_secret] = token[:secret]
+
+      info = auth[:info]
+
+      session[:twitter_id] = info[:nickname]
+      session[:twitter_name] = info[:name]
     end
 end

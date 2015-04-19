@@ -10,43 +10,17 @@
     <%= render 'shared/error_messages' %>
     <p style="color: green;"><%= notice %></p>
     <p style="color: red;"><%= alert %></p>
-    <p><%= f.label :twitter_name, "twitter_name" %><%= f.text_field :twitter_name %></p>
-    <p><%= f.label :twitter_id, "twitter_id" %><%= f.text_field :twitter_id %></p>
+    <p><b>YourAccount：<%= get_twitter_name %><%= get_twitter_id %></b></p>
     <%= button_tag('bot登録', class: "btn btn-info") %>
     <% end %>
   </div>
 
-  <hr>
+  <%= render partial: 'test', locals:
+    { h2: 'TweetTest', url: '/admin/twitter/tweet', field_name: 'tweet', id: 'bot_id', p_elements: [text: 'Tweet', field_name: 'tweet', id: 'content'] } %>
 
-  <h2>❏ TweetTest</h2>
+  <%= render partial: 'test', locals: { h2: 'FollowTest', url: '/admin/twitter/follow', field_name: 'follow', id: 'bot_id', p_elements: nil } %>
 
-  <div style="padding-bottom: 10px;">
-    <%= form_tag "/admin/twitter/tweet" do %>
-    <p>Bot id<%= text_field :tweet, :bot_id %></p>
-    <p>Tweet<%= text_field :tweet, :content %></p>
-    <%= button_tag('Tweet', class: "btn btn-info") %>
-    <% end %>
-  </div>
-
-  <hr>
-
-  <h2>❏ FollowTest</h2>
-
-  <div style="padding-bottom: 10px;">
-  <%= form_tag "/admin/twitter/follow" do %>
-  <p>Bot id<%= text_field :follow, :bot_id %></p>
-  <%= button_tag('Follow', class: "btn btn-info") %>
-  <% end %>
-  </div>
-
-  <h2>❏ RetweetTest</h2>
-
-  <div style="padding-bottom: 10px;">
-  <%= form_tag "/admin/twitter/retweet" do %>
-  <p>Bot id<%= text_field :retweet, :bot_id %></p>
-  <%= button_tag('Follow', class: "btn btn-info") %>
-  <% end %>
-  </div>
+  <%= render partial: 'test', locals: { h2: 'RetweetTest', url: '/admin/twitter/retweet', field_name: 'retweet', id: 'bot_id', p_elements: nil } %>
 
   <h2>❏ 一覧</h2>
 

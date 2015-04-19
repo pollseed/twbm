@@ -24,15 +24,23 @@ gem "oauth", '~> 0.4.0'
 gem 'twitter', '~> 5.14.0'
 gem "tweetstream", '~> 2.6.0'
 
+gem "sprockets", '2.12.3'
+
 gem 'whenever', '~> 0.9.0', :require => false
 
 group :development, :test do
+  gem 'rb-readline'
   gem 'rspec', '~> 3.0'
   gem 'rspec-rails', '~> 3.0'
   gem 'better_errors', '~> 2.0'
   gem 'byebug', '~> 4.0'
   gem 'web-console', '~> 2.0'
   gem 'spring', '~> 1.0'
+  gem 'capistrano', '~> 3.0'
+  gem 'capistrano-rails', '~> 1.0'
+  gem 'capistrano-rbenv', '~> 2.0'
+  gem 'capistrano-bundler', '~> 1.0'
+  gem 'capistrano3-unicorn', '~> 0.1'
 end
 
 group :test do
@@ -43,4 +51,8 @@ group :test do
   gem 'shoulda-matchers', '~> 2.0'
   gem 'rails-erd'
   # gem 'coveralls', require: false
+end
+
+group :production, :staging do
+  gem 'unicorn'
 end
