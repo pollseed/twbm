@@ -29,6 +29,7 @@ gem "sprockets", '2.12.3'
 gem 'whenever', '~> 0.9.0', :require => false
 
 group :development, :test do
+  gem 'rb-readline'
   gem 'rspec', '~> 3.0'
   gem 'rspec-rails', '~> 3.0'
   gem 'better_errors', '~> 2.0'
